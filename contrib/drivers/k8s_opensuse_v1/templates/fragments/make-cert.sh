@@ -81,9 +81,9 @@ EOF
 )
 
 #trust is introduced in Keystone v3 version
-AUTH_URL=${AUTH_URL/v2.0/v3}
+# AUTH_URL=${AUTH_URL/v2.0/v3} (most probably not a good idea anymore)
 content_type='Content-Type: application/json'
-url="$AUTH_URL/auth/tokens"
+url="$AUTH_URL/v3/auth/tokens"
 USER_TOKEN=`curl -s -i -X POST -H "$content_type" -d "$auth_json" $url \
     | grep X-Subject-Token | awk '{print $2}' | tr -d '[[:space:]]'`
 
