@@ -66,7 +66,7 @@ EOF
 )
 
     content_type='Content-Type: application/json'
-    url="$AUTH_URL/auth/tokens"
+    url="$AUTH_URL/v3/auth/tokens"
     USER_TOKEN=`curl $VERIFY_CA -s -i -X POST -H "$content_type" -d "$auth_json" $url \
         | grep -i X-Subject-Token | awk '{print $2}' | tr -d '[[:space:]]'`
 
